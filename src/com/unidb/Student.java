@@ -15,19 +15,21 @@ public class Student extends Person {
         this.enrolledDate = enrolledDate;
     }
 
-    @Override
-    public void encode() {
-
-    }
-
-    @Override
-    public void decode() {
-
-    }
 
     enum studyTypes {
         Bachelor,
         Masters,
         Doctor
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "enrolledDate=" + enrolledDate +
+                ", studyType=" + studyType +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
