@@ -1,7 +1,7 @@
 package com.unidb;
 
 public interface IPersist {
-    void encode(); //TODO: Adam implement
+    void encode();
 
-    void decode(); //TODO: Adam implement
+    Object decode();
 }

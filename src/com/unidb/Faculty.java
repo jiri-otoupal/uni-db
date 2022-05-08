@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Faculty implements IPersist {
+public class Faculty extends Persistable {
     protected String tag;
     protected String name;
     protected String description;
@@ -20,28 +20,26 @@ public class Faculty implements IPersist {
     }
 
     public Faculty addPerson(Person person) {
-        int nextId = 0;
-
-        if (personMap.containsValue(person))
-            return this;
-
-        if (!personMap.isEmpty())
-            nextId = Collections.max(personMap.keySet()) + 1;
-
-        if (person.id == null)
-            person.id = nextId;
-
-        personMap.put(nextId, person);
+        if (personMap.get(person.id) != null) {
+            throw new RuntimeException("Person already in faculty");
+        }
+        personMap.put(person.id, person);
         return this;
     }
 
-    @Override
-    public void encode() {
-
+    public Faculty removePerson(Person person) {
+        this.personMap.remove(person.id);
+        return this;
     }
 
-    @Override
-    public void decode() {
 
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "tag='" + tag + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", personMap=" + personMap +
+                '}';
     }
 }

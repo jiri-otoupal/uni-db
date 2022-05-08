@@ -3,7 +3,7 @@ package com.unidb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class University implements IPersist {
+public class University extends Persistable {
     private final List<Faculty> facultyList;
 
     public University() {
@@ -19,12 +19,9 @@ public class University implements IPersist {
     }
 
     @Override
-    public void encode() {
-
-    }
-
-    @Override
-    public void decode() {
-
+    public String toString() {
+        return "University{" +
+                "facultyList=" + facultyList +
+                '}';
     }
 }
